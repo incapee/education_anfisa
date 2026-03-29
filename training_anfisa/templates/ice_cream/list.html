@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Каталог мороженного</h1>
+<ul>
+    {% for item in catalog %}
+    <li>
+        <h2>{{ item.title }}</h2>
+        <p>{{ item.description }}</p>
+        <a href="{% url 'ice_cream:item' item.id %}">Подробнее...</a>
+    </li>
+    {% if not forloop.last %}
+    <hr>
+    {% endif %}
+    {% empty %}
+    <h2>Каталог в данный момент пуст...</h2>
+    {% endfor %}
+</ul>
+{% endblock %}
